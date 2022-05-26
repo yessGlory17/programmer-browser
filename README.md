@@ -24,6 +24,10 @@ For a more comfortable use, I recommend that you take advantage of your operatin
 
 
 
+#### :bulb: Feature Request
+
+If there is a feature you need, please let me know by opening an issue. I will try to add this feature as soon as possible. But if you want, you can add the feature you want and contribute to the project.
+
 ## :muscle: Motivation
 
 Hello, I am a programmer. And I need to speed dial while writing code. That's why standard browsers don't do much for me. My goal in this project is to create a useful browser that allows quick searches for programmers like me.
@@ -45,6 +49,8 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 ![](./docs/images/pb-4.png)
 
 ![](./docs/images/pb-5.png)
+
+[![Programmer Browser Video](https://img.youtube.com/vi/viSwzTKtArQ/0.jpg)](https://www.youtube.com/watch?v=viSwzTKtArQ)
 
 ## :tada: Roadmap
 
