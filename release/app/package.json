@@ -1,12 +1,12 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "programmer-browser",
   "version": "4.6.0",
-  "description": "A foundation for scalable desktop apps",
+  "description": "A fast-searching and space-saving browser specially designed for programmers.",
   "license": "MIT",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "name": "yessGlory17",
+    "email": "ozgurkurucan337@gmail.com",
+    "url": "https://github.com/yessGlory17/programmer-browser"
   },
   "main": "./dist/main/main.js",
   "scripts": {
