@@ -5,7 +5,7 @@ labels: 'enhancement'
 ---
 
 <!---
-❗️❗️ Also, please consider donating (https://opencollective.com/electron-react-boilerplate-594) ❗️❗️
+
 
 Donations will ensure the following:
 
