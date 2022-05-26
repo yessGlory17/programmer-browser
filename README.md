@@ -36,15 +36,13 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 
 
 
-![](/home/ozgur/Desktop/programmer-browser/docs/images/pb-1.png)
+![](./docs/images/pb-1.png)
 
-![pb-2](/home/ozgur/Desktop/programmer-browser/docs/images/pb-2.png)
+![pb-2](./docs/images/pb-2.png)
 
-![pb-3](/home/ozgur/Desktop/programmer-browser/docs/images/pb-3.png)
+![pb-3](./docs/images/pb-3.png)
 
-![](/home/ozgur/Pictures/pb-4.png)
-
-
+![](./docs/images/pb-4.png)
 
 
 
