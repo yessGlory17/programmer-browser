@@ -1,0 +1,78 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  background: transparent;
+
+  font-family: sans-serif;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.Hello {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+
+}
+
+webview {
+  position: absolute;
+  z-index: 2;
+}
+
+#search-bar-container{
+  /* -webkit-app-region: drag; */
+  animation-name: initSearchbar;
+  animation-duration: 1s;
+}
+
+.browser-view{
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+
+*::-webkit-scrollbar{
+  display: none;
+}
+
+@keyframes initSearchbar {
+  from {
+    width: 0vw;
+  }
+
+  to{
+    width: 95vw;
+  }
+}
