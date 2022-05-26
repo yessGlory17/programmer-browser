@@ -1,9 +1,11 @@
+
+
+<p align="center">
+  <img src='https://github.com/yessGlory17/programmer-browser/blob/main/assets/icon.png' width='200px' height='200px' />
+</p>
+
+
 # Programmer Browser
-
-![](/home/ozgur/Desktop/programmer-browser/assets/icon.png)
-
-
-
 
 
 A fast-searching and space-saving browser specially designed for programmers.
