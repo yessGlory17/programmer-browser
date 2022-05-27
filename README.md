@@ -57,12 +57,12 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 - [x] Collapses
 - [x] AdBlock
 - [ ] Mute Collapse Audio
-- [ ] Keyboard Shortcuts (Search/Control)
+- [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
 - [ ] Create Categories
 - [ ] Context Menu (Cut/Copy/Paste)
 - [ ] Set Tab Color
 - [ ] Refresh Collapse
-
+- [ ] Add Electron Updater
 
 
 ## :crystal_ball: Usage
