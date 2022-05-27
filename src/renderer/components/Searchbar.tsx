@@ -5,12 +5,20 @@ import {
   InputGroup,
   InputLeftAddon,
   InputRightElement,
-  HStack
+  HStack,
+  Select
 } from '@chakra-ui/react';
-import {useContext, useEffect,useState} from 'react';
+import {useCallback, useContext, useEffect,useState} from 'react';
 import { SearchContext } from 'renderer/context/SearchContext';
+import {FcGoogle} from 'react-icons/fc';
 import '../App.css';
+import SearchEngineModal from './Settings/SearchEngineModal';
+
 const Searchbar = ({}) => {
+
+  const [isModalOpen, setModal] = useState(false);
+
+  const onClose = () => setModal(!isModalOpen);
 
   const {
     url,
@@ -21,12 +29,27 @@ const Searchbar = ({}) => {
     search
   } = useContext(SearchContext);
 
+
+  const handleSetSearchEngineShortcut = useCallback((event)=>{
+    if(event.ctrlKey && (event.key === 'E' || event.key === 'e')){
+      onClose();
+    }
+  })
+
+  useEffect(()=>{
+    document.addEventListener('keydown',handleSetSearchEngineShortcut);
+
+    return () => {
+      document.removeEventListener('keydown',handleSetSearchEngineShortcut);
+    }
+  },[])
+
   return (
     <>
       <HStack w='95vw' >
         <InputGroup size='md' h='40px' id='search-bar-container'
         >
-          {/* <InputLeftAddon h='40px' children='Google' color='white' backgroundColor='teal' /> */}
+          <InputLeftAddon h='40px' children={<FcGoogle />} color='white' backgroundColor='#32363e' border='none'  onClick={onClose} />
           <Input variant='filled' placeholder='Search' autoFocus
             onKeyDown={e => e.key === 'Enter' && search()}
             onChange={onChange}
@@ -54,7 +77,7 @@ const Searchbar = ({}) => {
         </InputGroup>
 
       </HStack>
-
+      <SearchEngineModal isOpen={isModalOpen} onClose={onClose} />
     </>
   );
 }

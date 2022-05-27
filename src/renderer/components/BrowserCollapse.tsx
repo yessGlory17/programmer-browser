@@ -36,6 +36,10 @@ const BrowserCollapse = ({name, tabUrl, tabId}) => {
     webviewRef.current.canGoForward() && webviewRef.current.goForward()
   }
 
+  const refresh = (e) => {
+    e.preventDefault();
+    webviewRef.current.isLoading() ? webviewRef.current.stop() : webviewRef.current.reload();
+  }
 
   const getTitle = () => {
     if(webviewRef.current === undefined){
@@ -67,7 +71,19 @@ const BrowserCollapse = ({name, tabUrl, tabId}) => {
               onClick={(e)=>forward(e)}
               icon={<AiOutlineRight _hover={{color:'red'}} />}
             />
+            <IconButton
+              backgroundColor="#32363e"
+              marginRight='10px'
+              _hover={{ bg: '#32363e' }}
+              size='xs'
+              onClick={(e) => refresh(e)}
+              icon={
+                <RepeatIcon
+                  _hover={{ color: 'yellow' }}
 
+                />
+              }
+            />
             <IconButton
               backgroundColor="#32363e"
               _hover={{ bg: '#32363e' }}
