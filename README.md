@@ -82,7 +82,8 @@ npm run package --mac
 npm run package --windows
 ```
 
-
+## :zap: How to Install .deb File
+[![Programmer Browser Video](https://img.youtube.com/vi/H0FC6WZjqCc/0.jpg)](https://www.youtube.com/watch?v=H0FC6WZjqCc)
 
 ## :handshake: Contribute
 
