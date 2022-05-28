@@ -11,6 +11,8 @@ import {
 import {useCallback, useContext, useEffect,useState} from 'react';
 import { SearchContext } from 'renderer/context/SearchContext';
 import {FcGoogle} from 'react-icons/fc';
+import {SiDuckduckgo} from 'react-icons/si';
+import {FaYandexInternational} from 'react-icons/fa';
 import '../App.css';
 import SearchEngineModal from './Settings/SearchEngineModal';
 
@@ -26,7 +28,8 @@ const Searchbar = ({}) => {
     keyword,
     setKeyword,
     onChange,
-    search
+    search,
+    searchEngine
   } = useContext(SearchContext);
 
 
@@ -44,12 +47,23 @@ const Searchbar = ({}) => {
     }
   },[])
 
+  const getEngineIcon = () => {
+      switch(searchEngine){
+        case "https://www.google.com/search?q=":
+          return <FcGoogle />
+        case "https://yandex.com.tr/search/?text=":
+          return <FaYandexInternational/>
+        case "https://duckduckgo.com/?q=":
+          return <SiDuckduckgo />
+      }
+  }
+
   return (
     <>
       <HStack w='95vw' >
         <InputGroup size='md' h='40px' id='search-bar-container'
         >
-          <InputLeftAddon h='40px' children={<FcGoogle />} color='white' backgroundColor='#32363e' border='none'  onClick={onClose} />
+          <InputLeftAddon h='40px' children={getEngineIcon()} color='white' backgroundColor='#32363e' border='none'  onClick={onClose} />
           <Input variant='filled' placeholder='Search' autoFocus
             onKeyDown={e => e.key === 'Enter' && search()}
             onChange={onChange}
