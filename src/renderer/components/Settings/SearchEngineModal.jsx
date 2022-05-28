@@ -29,7 +29,7 @@ const SearchEngineModal = ({ isOpen, onClose }) => {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay  />
+        <ModalOverlay backgroundColor='transparent' />
         <ModalContent
           backgroundColor="#32363e"
           onChange={(e) => onChangeSelect(e)}
