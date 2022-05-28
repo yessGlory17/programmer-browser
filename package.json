@@ -229,7 +229,7 @@
     "publish": {
       "provider": "github",
       "owner": "yessGlory17",
-      "repo": "ProgrammerBrowser"
+      "repo": "programmer-browser"
     }
   },
   "devEngines": {
