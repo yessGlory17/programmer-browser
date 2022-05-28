@@ -21,7 +21,7 @@ const SearchEngineModal = ({ isOpen, onClose }) => {
     onChange,
     search,
     setSearchEngine,
-    searchEngine
+    searchEngine,
   } = useContext(SearchContext);
 
   const onChangeSelect = (event) => setSearchEngine(event.target.value);
@@ -29,28 +29,43 @@ const SearchEngineModal = ({ isOpen, onClose }) => {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay backgroundColor='transparent' />
+        <ModalOverlay backgroundColor="transparent" />
         <ModalContent
           backgroundColor="#32363e"
           onChange={(e) => onChangeSelect(e)}
         >
           <ModalHeader>Search Engine Settings</ModalHeader>
           <ModalCloseButton />
-          <ModalBody marginBottom='20px' >
+          <ModalBody marginBottom="20px">
             <Select
               value={searchEngine}
               backgroundColor={{ backgroundColor: '#32363e' }}
             >
-              <option value='https://www.google.com/search?q=' style={{backgroundColor:'#32363e'}} > Google</option>
-              <option value='https://duckduckgo.com/?q=' style={{backgroundColor:'#32363e'}}>DucDuckGo</option>
-              <option value='https://yandex.com.tr/search/?text=' style={{backgroundColor:'#32363e'}}>Yandex</option>
+              <option
+                value="https://www.google.com/search?q="
+                style={{ backgroundColor: '#32363e' }}
+              >
+                {' '}
+                Google
+              </option>
+              <option
+                value="https://duckduckgo.com/?q="
+                style={{ backgroundColor: '#32363e' }}
+              >
+                DucDuckGo
+              </option>
+              <option
+                value="https://yandex.com.tr/search/?text="
+                style={{ backgroundColor: '#32363e' }}
+              >
+                Yandex
+              </option>
             </Select>
           </ModalBody>
-
         </ModalContent>
       </Modal>
     </>
-  )
-}
+  );
+};
 
 export default SearchEngineModal;

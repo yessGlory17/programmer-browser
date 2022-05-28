@@ -52,17 +52,32 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 
 [![Programmer Browser Video](https://img.youtube.com/vi/viSwzTKtArQ/0.jpg)](https://www.youtube.com/watch?v=viSwzTKtArQ)
 
+
+
+
+
+## :keyboard: Shortucts
+
+| Shortcut Name    | Shortcut Keys        |
+| ---------------- | -------------------- |
+| Full Screen      | F11                  |
+| Ctrl+E           | Change Search Engine |
+| Skip To Next Tab | Tab                  |
+
+
+
 ## :tada: Roadmap
 
 - [x] Collapses
 - [x] AdBlock
+- [x] Change Search Engine
 - [ ] Mute Collapse Audio
 - [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
 - [ ] Create Categories
 - [ ] Context Menu (Cut/Copy/Paste)
 - [ ] Set Tab Color
-- [ ] Refresh Collapse
-- [ ] Add Electron Updater
+- [x] Refresh Collapse
+- [x] Add Electron Updater
 
 
 ## :crystal_ball: Usage
