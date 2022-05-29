@@ -58,11 +58,13 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 
 ## :keyboard: Shortucts
 
-| Shortcut Name           | Shortcut Keys  | Example                    |
-| ----------------------- | -------------- | -------------------------- |
-| Full Screen             | F11            |                            |
-| Change Search Engine    | Ctrl + E       |                            |
-| Navigating between tabs | Ctrl + (index) | Ctrl + 1 => Open First Tab |
+| Shortcut Name           | Shortcut Keys      | Example                    |
+| ----------------------- | ------------------ | -------------------------- |
+| Full Screen             | F11                |                            |
+| Change Search Engine    | Ctrl + E           |                            |
+| Navigating between tabs | Ctrl + (index)     | Ctrl + 1 => Open First Tab |
+| Window Move Left        | Ctrl + Left Arrow  |                            |
+| Window Move Right       | Ctrl + Right Arrow |                            |
 
 ## :tada: Roadmap
 
