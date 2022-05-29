@@ -29,6 +29,7 @@ import List from './components/List';
 import Searchbar from './components/Searchbar';
 import Webview from './components/Webview';
 import {SearchContextProvider } from './context/SearchContext';
+import { TabContextProvider } from './context/TabContext';
 
 
 const Hello = () => {
@@ -38,8 +39,10 @@ const Hello = () => {
       {/* Searchbar */}
       <SearchContextProvider>
         <Container centerContent paddingTop='10px'>
-          <Searchbar />
-          <List />
+          <TabContextProvider>
+            <Searchbar />
+            <List />
+          </TabContextProvider>
         </Container>
       </SearchContextProvider>
     </div>
