@@ -21,12 +21,15 @@ import { SearchContext } from 'renderer/context/SearchContext';
 import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from 'react-icons/ai';
 import Webview from './Webview';
 
-const BrowserCollapse = ({ name, tabUrl, tabId }) => {
+const BrowserCollapse = ({ name, tabUrl, tabId, onOpen, index }) => {
   const webviewRef = useRef();
 
   const [collapseName, setCollapseName] = useState(name);
 
   const { closeTab } = useContext(SearchContext);
+
+
+
 
   const close = (id: any) => closeTab(id);
 
@@ -55,9 +58,9 @@ const BrowserCollapse = ({ name, tabUrl, tabId }) => {
     return webviewRef.current.getTitle();
   };
   return (
-    <AccordionItem border="none">
+    <AccordionItem border="none"  >
       <h2>
-        <AccordionButton _expanded={{ bg: '#03c9d7', color: 'white' }}>
+        <AccordionButton _expanded={{ bg: '#03c9d7', color: 'white' }} onClick={(e)=> {onOpen(e,index)}} >
           <IconButton
             backgroundColor="#32363e"
             _hover={{ bg: '#32363e' }}
