@@ -156,6 +156,6 @@ app
   })
   .catch(console.log);
 
-ipcMain.on('window-move',(args)=>{
+ipcMain.on('window-move',(event,args)=>{
   positioner.move(args);
 })
