@@ -69,13 +69,14 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 - [x] Collapses
 - [x] AdBlock
 - [x] Change Search Engine
+- [x] Navigating between tabs  
 - [ ] Mute Collapse Audio
 - [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
 - [ ] Create Categories
 - [ ] Context Menu (Cut/Copy/Paste)
 - [ ] Set Tab Color
 - [x] Refresh Collapse
-- [x] Add Electron Updater
+- [ ] Add Electron Updater
 
 
 ## :crystal_ball: Usage
