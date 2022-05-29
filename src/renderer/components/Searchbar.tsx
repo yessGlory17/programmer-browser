@@ -17,6 +17,8 @@ import '../App.css';
 import { TabContext } from 'renderer/context/TabContext';
 import SearchEngineModal from './Settings/SearchEngineModal';
 
+
+
 const Searchbar = ({}) => {
   const [isModalOpen, setModal] = useState(false);
 
@@ -31,6 +33,15 @@ const Searchbar = ({}) => {
     if (event.ctrlKey && (event.key === 'E' || event.key === 'e')) {
       onClose();
     }
+
+    if(event.ctrlKey && (event.key === "ArrowLeft")){
+      window.electron.ipcRenderer.sendMessage('window-move','topLeft')
+    }
+
+    if(event.ctrlKey && (event.key === "ArrowRight")){
+      window.electron.ipcRenderer.sendMessage('window-move','topRight')
+    }
+
     nexTab(event);
   });
 

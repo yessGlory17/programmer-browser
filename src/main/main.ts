@@ -18,6 +18,7 @@ import Positoner from 'electron-positioner';
 import { ElectronBlocker } from '@cliqz/adblocker-electron';
 import fetch from 'cross-fetch';
 
+let positioner;
 
 export default class AppUpdater {
   constructor() {
@@ -87,7 +88,7 @@ const createWindow = async () => {
     icon: getAssetPath('icon.png'),
     webPreferences: {
       webviewTag:true,
-
+      nodeIntegration:false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
@@ -99,8 +100,8 @@ const createWindow = async () => {
     blocker.enableBlockingInSession(mainWindow?.webContents.session);
   })
 
-  var positioner = new Positoner(mainWindow);
-  positioner.move('topRight')
+  positioner = new Positoner(mainWindow);
+  positioner.move('topRight');
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
@@ -128,7 +129,6 @@ const createWindow = async () => {
   });
 
   // Remove this if your app does not use auto updates
-  // eslint-disable-next-line
   new AppUpdater();
 };
 
@@ -155,3 +155,7 @@ app
     });
   })
   .catch(console.log);
+
+ipcMain.on('window-move',(args)=>{
+  positioner.move(args);
+})
