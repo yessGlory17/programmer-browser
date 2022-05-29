@@ -69,9 +69,14 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 - [x] Collapses
 - [x] AdBlock
 - [x] Change Search Engine
-- [x] Navigating between tabs  
 - [ ] Mute Collapse Audio
 - [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
+  - [x] Navigating between tabs  
+  - [ ] Close Tab
+  - [ ] Close All Tab
+  - [ ] Previous Page
+  - [ ] Next Page
+
 - [ ] Create Categories
 - [ ] Context Menu (Cut/Copy/Paste)
 - [ ] Set Tab Color
