@@ -68,9 +68,9 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 
 - [x] Collapses
 - [x] AdBlock
-- [x] Change Search Engine
 - [ ] Mute Collapse Audio
 - [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
+  - [x] Change Search Engine
   - [x] Navigating between tabs  
   - [ ] Close Tab
   - [ ] Close All Tab
