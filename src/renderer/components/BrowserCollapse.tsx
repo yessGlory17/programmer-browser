@@ -60,7 +60,7 @@ const BrowserCollapse = ({ name, tabUrl, tabId, onOpen, index }) => {
   return (
     <AccordionItem border="none"  >
       <h2>
-        <AccordionButton _expanded={{ bg: '#03c9d7', color: 'white' }} onClick={()=> onOpen(index)} >
+        <AccordionButton _expanded={{ bg: '#03c9d7', color: 'white' }} onClick={(e)=> {onOpen(e,index)}} >
           <IconButton
             backgroundColor="#32363e"
             _hover={{ bg: '#32363e' }}

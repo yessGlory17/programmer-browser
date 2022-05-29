@@ -22,11 +22,6 @@ export const TabContextProvider = (props) => {
       setTabIndex(Number(event.key) - 1);
 
     }
-
-    if (event.altKey && (event.key === 'X' || event.key === 'x')) {
-      console.log('tab id', tabs);
-      //closeTab(tabs)
-    }
   };
 
   return (

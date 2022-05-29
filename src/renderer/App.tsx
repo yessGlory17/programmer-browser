@@ -20,14 +20,11 @@ import { Input,
   Container,
   Spacer
  } from '@chakra-ui/react';
-import { useEffect,useState, useCon } from 'react';
+
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
-import BrowserCollapse from './components/BrowserCollapse';
 import List from './components/List';
 import Searchbar from './components/Searchbar';
-import Webview from './components/Webview';
 import {SearchContextProvider } from './context/SearchContext';
 import { TabContextProvider } from './context/TabContext';
 

@@ -22,20 +22,16 @@ const Searchbar = ({}) => {
 
   const onClose = () => setModal(!isModalOpen);
 
-  const { url, setUrl, keyword, setKeyword, onChange, search, searchEngine } =
+  const { url, setUrl, keyword, setKeyword,tabs,closeTab, onChange, search, searchEngine } =
     useContext(SearchContext);
 
-  const { nexTab,setTabIndex } = useContext(TabContext);
+  const { nexTab,setTabIndex,currentTabIndex } = useContext(TabContext);
 
   const handleSetSearchEngineShortcut = useCallback((event) => {
     if (event.ctrlKey && (event.key === 'E' || event.key === 'e')) {
       onClose();
     }
-
     nexTab(event);
-
-
-
   });
 
   useEffect(() => {

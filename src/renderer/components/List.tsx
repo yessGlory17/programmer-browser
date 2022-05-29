@@ -13,15 +13,13 @@ const List = () => {
     setTabIndex
   } = useContext(TabContext);
 
-  const onOpen = (index) => {
-
+  const onOpen = (e,index) => {
+    e.preventDefault();
     if(currentTabIndex == index) {
       setTabIndex(null)
     }else{
       setTabIndex(index)
     }
-
-    console.log(tabs);
   }
 
 
