@@ -12,11 +12,11 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import MenuBuilder from './menu';
-import { resolveHtmlPath } from './util';
 import Positoner from 'electron-positioner';
 import { ElectronBlocker } from '@cliqz/adblocker-electron';
 import fetch from 'cross-fetch';
+import { resolveHtmlPath } from './util';
+import MenuBuilder from './menu';
 
 let positioner;
 
@@ -82,23 +82,22 @@ const createWindow = async () => {
     show: false,
     width: 600,
     height: dimensions.height,
-    transparent:true,
-    frame:false,
-    alwaysOnTop:true,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
     icon: getAssetPath('icon.png'),
     webPreferences: {
-      webviewTag:true,
-      nodeIntegration:false,
+      webviewTag: true,
+      nodeIntegration: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
-
   });
 
-  ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker)=>{
+  ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
     blocker.enableBlockingInSession(mainWindow?.webContents.session);
-  })
+  });
 
   positioner = new Positoner(mainWindow);
   positioner.move('topRight');
@@ -156,6 +155,6 @@ app
   })
   .catch(console.log);
 
-ipcMain.on('window-move',(event,args)=>{
+ipcMain.on('window-move', (event, args) => {
   positioner.move(args);
-})
+});

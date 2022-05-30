@@ -1,26 +1,29 @@
-import { createContext, useCallback, useContext, useState } from 'react';
-import { SearchContext } from './SearchContext';
+import { createContext, useState } from 'react';
 
-export const TabContext = createContext();
+type TabContextProps = {
+  currentTabIndex: number;
+  setTabIndex: React.Dispatch<React.SetStateAction<number>>;
+  nextTab: (evt: KeyboardEvent) => void;
+};
 
-export const TabContextProvider = (props) => {
-  const [currentTabIndex, setTabIndex] = useState(0);
+type TabContextProviderProps = {
+  children: React.ReactNode;
+};
 
-  const { closeTab, tabs } = useContext(SearchContext);
+export const TabContext = createContext<Partial<TabContextProps>>({});
 
-  const nexTab = (event) => {
+export const TabContextProvider = ({ children }: TabContextProviderProps) => {
+  const [currentTabIndex, setTabIndex] = useState<number>(0);
 
-    if (event.ctrlKey && isFinite(event.key)) {
+  const nextTab = (event: KeyboardEvent) => {
+    if (event.ctrlKey && Number.isFinite(event.keyCode)) {
       // if (Number(event.key) - 1 == currentTabIndex) {
       //   setTabIndex(null);
       // } else {
       //   setTabIndex(Number(event.key) - 1);
       // }
 
-
-
       setTabIndex(Number(event.key) - 1);
-
     }
   };
 
@@ -29,10 +32,10 @@ export const TabContextProvider = (props) => {
       value={{
         currentTabIndex,
         setTabIndex,
-        nexTab,
+        nextTab,
       }}
     >
-      {props.children}
+      {children}
     </TabContext.Provider>
   );
 };

@@ -6,7 +6,6 @@ import {
   InputLeftAddon,
   InputRightElement,
   HStack,
-  Select,
 } from '@chakra-ui/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { SearchContext } from 'renderer/context/SearchContext';
@@ -17,33 +16,31 @@ import '../App.css';
 import { TabContext } from 'renderer/context/TabContext';
 import SearchEngineModal from './Settings/SearchEngineModal';
 
+const Searchbar = () => {
+  const [isModalOpen, setModal] = useState<boolean>(false);
 
+  const { onChange, search, searchEngine } = useContext(SearchContext);
 
-const Searchbar = ({}) => {
-  const [isModalOpen, setModal] = useState(false);
+  const { nextTab } = useContext(TabContext);
 
-  const onClose = () => setModal(!isModalOpen);
+  const handleSetSearchEngineShortcut = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.ctrlKey && (event.key === 'E' || event.key === 'e')) {
+        setModal(!isModalOpen);
+      }
 
-  const { url, setUrl, keyword, setKeyword,tabs,closeTab, onChange, search, searchEngine } =
-    useContext(SearchContext);
+      if (event.ctrlKey && event.key === 'ArrowLeft') {
+        window.electron.ipcRenderer.sendMessage('window-move', 'topLeft');
+      }
 
-  const { nexTab,setTabIndex,currentTabIndex } = useContext(TabContext);
+      if (event.ctrlKey && event.key === 'ArrowRight') {
+        window.electron.ipcRenderer.sendMessage('window-move', 'topRight');
+      }
 
-  const handleSetSearchEngineShortcut = useCallback((event) => {
-    if (event.ctrlKey && (event.key === 'E' || event.key === 'e')) {
-      onClose();
-    }
-
-    if(event.ctrlKey && (event.key === "ArrowLeft")){
-      window.electron.ipcRenderer.sendMessage('window-move','topLeft')
-    }
-
-    if(event.ctrlKey && (event.key === "ArrowRight")){
-      window.electron.ipcRenderer.sendMessage('window-move','topRight')
-    }
-
-    nexTab(event);
-  });
+      nextTab?.(event);
+    },
+    [nextTab, isModalOpen]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', handleSetSearchEngineShortcut);
@@ -51,7 +48,7 @@ const Searchbar = ({}) => {
     return () => {
       document.removeEventListener('keydown', handleSetSearchEngineShortcut);
     };
-  }, []);
+  }, [handleSetSearchEngineShortcut]);
 
   const getEngineIcon = () => {
     switch (searchEngine) {
@@ -61,6 +58,8 @@ const Searchbar = ({}) => {
         return <FaYandexInternational />;
       case 'https://duckduckgo.com/?q=':
         return <SiDuckduckgo />;
+      default:
+        return <FcGoogle />;
     }
   };
 
@@ -70,18 +69,19 @@ const Searchbar = ({}) => {
         <InputGroup size="md" h="40px" id="search-bar-container">
           <InputLeftAddon
             h="40px"
-            children={getEngineIcon()}
             color="white"
             backgroundColor="#32363e"
             border="none"
-            onClick={onClose}
-          />
+            onClick={() => setModal(!isModalOpen)}
+          >
+            {getEngineIcon()}
+          </InputLeftAddon>
           <Input
             variant="filled"
             placeholder="Search"
             autoFocus
-            onKeyDown={(e) => e.key === 'Enter' && search()}
-            onChange={onChange}
+            onKeyDown={(e) => e.key === 'Enter' && search?.()}
+            onChange={(e) => onChange?.(e)}
             backgroundColor="#32363e"
             _focus={{ backgroundColor: '#32363e' }}
             _hover={{ backgroundColor: '#32363e' }}
@@ -107,7 +107,7 @@ const Searchbar = ({}) => {
           </InputRightElement>
         </InputGroup>
       </HStack>
-      <SearchEngineModal isOpen={isModalOpen} onClose={onClose} />
+      <SearchEngineModal isOpen={isModalOpen} onClose={() => setModal(false)} />
     </>
   );
 };
