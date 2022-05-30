@@ -1,35 +1,61 @@
-import { createContext, useState } from "react";
-import {v4 as uuidv4} from 'uuid';
-export const SearchContext = createContext();
+import { createContext, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-export const SearchContextProvider = (props) => {
+type Tab = {
+  tabId: string;
+  keyword: string;
+  url: string;
+};
 
-  const [url, setUrl] = useState('google');
-  const [keyword, setKeyword] = useState();
-  const [searchEngine, setSearchEngine] = useState('https://www.google.com/search?q=');
-  const [tabs, setTabs] = useState([]);
+type SearchContextProviderProps = {
+  children: React.ReactNode;
+};
 
-  const selectSearchEngine = (event) => setSearchEngine(event.target.value);
-  const onChange = (event) => setKeyword(event.target.value);
+type SearchContextProps = {
+  url: string;
+  setUrl: React.Dispatch<React.SetStateAction<string>>;
+  keyword: string;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+  searchEngine: string;
+  setSearchEngine: React.Dispatch<React.SetStateAction<string>>;
+  // selectSearchEngine;
+  onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  search: () => void;
+  tabs: Tab[];
+  closeTab: (id: string) => void;
+};
+
+export const SearchContext = createContext<Partial<SearchContextProps>>({});
+
+export const SearchContextProvider = ({
+  children,
+}: SearchContextProviderProps) => {
+  const [url, setUrl] = useState<string>('google');
+  const [keyword, setKeyword] = useState<string>('');
+  const [searchEngine, setSearchEngine] = useState<string>(
+    'https://www.google.com/search?q='
+  );
+  const [tabs, setTabs] = useState<Tab[]>([]);
+
+  // const selectSearchEngine = (event: Event) => setSearchEngine(event.target.value);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setKeyword((event.target as HTMLInputElement).value);
 
   const search = () => {
     const searchKeyword = searchEngine + keyword;
     setUrl(searchKeyword);
-    const newTab = {
-      'tabId':uuidv4(),
-      'keyword':keyword,
-      'url':searchKeyword,
-    }
+    const newTab: Tab = {
+      tabId: uuidv4(),
+      keyword,
+      url: searchKeyword,
+    };
     setTabs([...tabs, newTab]);
+  };
 
-    console.log(searchEngine);
-  }
-
-  const closeTab = (id) => {
-    const result = tabs.filter(item => item.tabId != id);
-    console.log(result)
+  const closeTab = (id: string) => {
+    const result = tabs.filter((item) => item.tabId !== id);
     setTabs(result);
-  }
+  };
 
   return (
     <SearchContext.Provider
@@ -40,17 +66,14 @@ export const SearchContextProvider = (props) => {
         setKeyword,
         searchEngine,
         setSearchEngine,
-        selectSearchEngine,
+        // selectSearchEngine,
         onChange,
         search,
         tabs,
-        closeTab
-      }}>
-      {props.children}
+        closeTab,
+      }}
+    >
+      {children}
     </SearchContext.Provider>
-  )
-
-}
-
-
-
+  );
+};
