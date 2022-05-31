@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -11,20 +11,16 @@ import {
 
 import { SearchContext } from '../../context/SearchContext';
 
-// eslint-disable-next-line react/prop-types
-const SearchEngineModal = ({ isOpen, onClose }) => {
-  const {
-    url,
-    setUrl,
-    keyword,
-    setKeyword,
-    onChange,
-    search,
-    setSearchEngine,
-    searchEngine,
-  } = useContext(SearchContext);
+type SearchEngineModalProps = {
+  isOpen: boolean;
+  onClose: any;
+};
 
-  const onChangeSelect = (event) => setSearchEngine(event.target.value);
+const SearchEngineModal = ({ isOpen, onClose }: SearchEngineModalProps) => {
+  const { setSearchEngine, searchEngine } = useContext(SearchContext);
+
+  const onChangeSelect = (event: React.FormEvent<HTMLElement>) =>
+    setSearchEngine?.((event.target as HTMLFormElement).value);
 
   return (
     <>
