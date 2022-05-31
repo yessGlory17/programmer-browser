@@ -26,9 +26,10 @@ const theme = extendTheme({
   },
 });
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
-root.render(
+const container = document.getElementById('root');
+const root = container && createRoot(container);
+
+root?.render(
   <ChakraProvider resetCSS theme={theme}>
     <App />
   </ChakraProvider>

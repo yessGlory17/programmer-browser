@@ -12,13 +12,14 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import Positoner from 'electron-positioner';
 import { ElectronBlocker } from '@cliqz/adblocker-electron';
 import fetch from 'cross-fetch';
 import { resolveHtmlPath } from './util';
 import MenuBuilder from './menu';
 
-let positioner: Positoner;
+const Positoner = require('electron-positioner');
+
+let positioner: any;
 
 export default class AppUpdater {
   constructor() {
@@ -159,6 +160,6 @@ app
   })
   .catch(console.log);
 
-ipcMain.on('window-move', (event, args) => {
+ipcMain.on('window-move', (_event, args) => {
   positioner.move(args);
 });

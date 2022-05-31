@@ -13,7 +13,7 @@ import { SearchContext } from '../../context/SearchContext';
 
 type SearchEngineModalProps = {
   isOpen: boolean;
-  onClose: any;
+  onClose: () => void;
 };
 
 const SearchEngineModal = ({ isOpen, onClose }: SearchEngineModalProps) => {
