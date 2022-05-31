@@ -1,7 +1,7 @@
 import { Accordion } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { SearchContext } from 'renderer/context/SearchContext';
-import { TabContext } from 'renderer/context/TabContext';
+import { SearchContext } from '../context/SearchContext';
+import { TabContext } from '../context/TabContext';
 import BrowserCollapse from './BrowserCollapse';
 
 const List = () => {
