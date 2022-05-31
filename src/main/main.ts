@@ -18,7 +18,7 @@ import fetch from 'cross-fetch';
 import { resolveHtmlPath } from './util';
 import MenuBuilder from './menu';
 
-let positioner;
+let positioner: Positoner;
 
 export default class AppUpdater {
   constructor() {
@@ -95,9 +95,12 @@ const createWindow = async () => {
     },
   });
 
-  ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
-    blocker.enableBlockingInSession(mainWindow?.webContents.session);
-  });
+  ElectronBlocker.fromPrebuiltAdsAndTracking(fetch)
+    .then((blocker) => {
+      if (!mainWindow || !mainWindow.webContents.session) return;
+      blocker.enableBlockingInSession(mainWindow.webContents.session);
+    })
+    .catch((e) => console.error(e));
 
   positioner = new Positoner(mainWindow);
   positioner.move('topRight');
@@ -128,6 +131,7 @@ const createWindow = async () => {
   });
 
   // Remove this if your app does not use auto updates
+  // eslint-disable-next-line
   new AppUpdater();
 };
 
