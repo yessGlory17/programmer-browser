@@ -22,7 +22,7 @@ const List = () => {
   };
 
   return (
-    <div>
+    <div style={{ overflow: 'scroll', height: '95vh' }}>
       <Accordion
         width="95vw"
         allowToggle
