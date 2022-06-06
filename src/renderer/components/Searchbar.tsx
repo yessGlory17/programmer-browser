@@ -8,12 +8,12 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { SearchContext } from 'renderer/context/SearchContext';
 import { FcGoogle } from 'react-icons/fc';
 import { SiDuckduckgo } from 'react-icons/si';
 import { FaYandexInternational } from 'react-icons/fa';
 import '../App.css';
-import { TabContext } from 'renderer/context/TabContext';
+import { SearchContext } from '../context/SearchContext';
+import { TabContext } from '../context/TabContext';
 import SearchEngineModal from './Settings/SearchEngineModal';
 
 const Searchbar = () => {

@@ -12,13 +12,14 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import Positoner from 'electron-positioner';
 import { ElectronBlocker } from '@cliqz/adblocker-electron';
 import fetch from 'cross-fetch';
 import { resolveHtmlPath } from './util';
 import MenuBuilder from './menu';
 
-let positioner;
+const Positoner = require('electron-positioner');
+
+let positioner: any;
 
 export default class AppUpdater {
   constructor() {
@@ -95,9 +96,12 @@ const createWindow = async () => {
     },
   });
 
-  ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
-    blocker.enableBlockingInSession(mainWindow?.webContents.session);
-  });
+  ElectronBlocker.fromPrebuiltAdsAndTracking(fetch)
+    .then((blocker) => {
+      if (!mainWindow || !mainWindow.webContents.session) return;
+      blocker.enableBlockingInSession(mainWindow.webContents.session);
+    })
+    .catch((e) => console.error(e));
 
   positioner = new Positoner(mainWindow);
   positioner.move('topRight');
@@ -128,6 +132,7 @@ const createWindow = async () => {
   });
 
   // Remove this if your app does not use auto updates
+  // eslint-disable-next-line
   new AppUpdater();
 };
 
@@ -155,6 +160,6 @@ app
   })
   .catch(console.log);
 
-ipcMain.on('window-move', (event, args) => {
+ipcMain.on('window-move', (_event, args) => {
   positioner.move(args);
 });

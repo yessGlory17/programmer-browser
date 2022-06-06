@@ -9,8 +9,8 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import React, { useContext, useRef } from 'react';
-import { SearchContext } from 'renderer/context/SearchContext';
 import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from 'react-icons/ai';
+import { SearchContext } from '../context/SearchContext';
 import Webview from './Webview';
 
 type BrowserCollapseTypes = {

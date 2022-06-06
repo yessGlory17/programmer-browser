@@ -81,7 +81,10 @@
     ],
     "transform": {
       "\\.(ts|tsx|js|jsx)$": "ts-jest"
-    }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!uuid)"
+    ]
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.1",

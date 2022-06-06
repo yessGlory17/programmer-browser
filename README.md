@@ -1,28 +1,18 @@
-
-
 <p align="center">
   <img src='https://github.com/yessGlory17/programmer-browser/blob/main/assets/icon.png' width='200px' height='200px' />
 </p>
 
-
 # Programmer Browser
 
-
 A fast-searching and space-saving browser specially designed for programmers.
-
-
 
 #### :star: Support Us
 
 If you like our project, do not forget to give stars. So we can get more attention and get more support from the community. Don't underestimate one star, one star you give will convince others to give the project another star.
 
-
-
 #### :angel: Developer Advice
 
 For a more comfortable use, I recommend that you take advantage of your operating system's ability to add shortcuts to the keyboard. With this feature, you can open and close the browser more easily.
-
-
 
 #### :bulb: Feature Request
 
@@ -32,13 +22,7 @@ If there is a feature you need, please let me know by opening an issue. I will t
 
 Hello, I am a programmer. And I need to speed dial while writing code. That's why standard browsers don't do much for me. My goal in this project is to create a useful browser that allows quick searches for programmers like me.
 
-
-
-
-
 ## :desktop_computer: Screenshots
-
-
 
 ![](./docs/images/pb-1.png)
 
@@ -51,10 +35,6 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 ![](./docs/images/pb-5.png)
 
 [![Programmer Browser Video](https://img.youtube.com/vi/viSwzTKtArQ/0.jpg)](https://www.youtube.com/watch?v=viSwzTKtArQ)
-
-
-
-
 
 ## :keyboard: Shortucts
 
@@ -72,8 +52,9 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 - [x] AdBlock
 - [ ] Mute Collapse Audio
 - [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
+
   - [x] Change Search Engine
-  - [x] Navigating between tabs  
+  - [x] Navigating between tabs
   - [ ] Close Tab
   - [ ] Close All Tab
   - [ ] Previous Page
@@ -84,7 +65,6 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 - [ ] Set Tab Color
 - [x] Refresh Collapse
 - [ ] Add Electron Updater
-
 
 ## :crystal_ball: Usage
 
@@ -104,6 +84,7 @@ npm run package --windows
 ```
 
 ## :zap: How to Install .deb File
+
 [![Programmer Browser Video](https://img.youtube.com/vi/H0FC6WZjqCc/0.jpg)](https://www.youtube.com/watch?v=H0FC6WZjqCc)
 
 ## :handshake: Contribute
