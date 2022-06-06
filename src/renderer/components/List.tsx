@@ -15,7 +15,7 @@ const List = () => {
   ) => {
     e.preventDefault();
     if (currentTabIndex === index) {
-      setTabIndex?.(0);
+      setTabIndex?.(null);
     } else {
       setTabIndex?.(index);
     }

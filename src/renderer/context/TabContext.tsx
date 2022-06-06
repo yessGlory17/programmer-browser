@@ -1,8 +1,10 @@
 import { createContext, useState } from 'react';
 
+type Nullable<T> = T | null;
+
 type TabContextProps = {
-  currentTabIndex: number;
-  setTabIndex: React.Dispatch<React.SetStateAction<number>>;
+  currentTabIndex: any;
+  setTabIndex: React.Dispatch<React.SetStateAction<any>>;
   nextTab: (evt: KeyboardEvent) => void;
 };
 
@@ -13,17 +15,15 @@ type TabContextProviderProps = {
 export const TabContext = createContext<Partial<TabContextProps>>({});
 
 export const TabContextProvider = ({ children }: TabContextProviderProps) => {
-  const [currentTabIndex, setTabIndex] = useState<number>(0);
+  const [currentTabIndex, setTabIndex] = useState<any>(0);
 
   const nextTab = (event: KeyboardEvent) => {
-    if (event.ctrlKey && Number.isFinite(event.keyCode)) {
-      // if (Number(event.key) - 1 == currentTabIndex) {
-      //   setTabIndex(null);
-      // } else {
-      //   setTabIndex(Number(event.key) - 1);
-      // }
-
-      setTabIndex(Number(event.key) - 1);
+    if (event.ctrlKey && Number.isFinite(Number(event.key))) {
+      if (Number(event.key) - 1 === currentTabIndex) {
+        setTabIndex(null);
+      } else {
+        setTabIndex(Number(event.key) - 1);
+      }
     }
   };
 

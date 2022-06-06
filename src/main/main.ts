@@ -95,6 +95,7 @@ const createWindow = async () => {
     },
   });
 
+
   ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
     blocker.enableBlockingInSession(mainWindow?.webContents.session);
   });
