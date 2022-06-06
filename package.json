@@ -218,8 +218,7 @@
     },
     "linux": {
       "target": [
-        "AppImage",
-        "deb"
+        "AppImage"
       ],
       "category": "Development"
     },
@@ -234,7 +233,8 @@
     "publish": {
       "provider": "github",
       "owner": "yessGlory17",
-      "repo": "programmer-browser"
+      "repo": "programmer-browser",
+      "token": "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"
     }
   },
   "devEngines": {
