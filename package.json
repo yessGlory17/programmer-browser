@@ -233,8 +233,7 @@
     "publish": {
       "provider": "github",
       "owner": "yessGlory17",
-      "repo": "programmer-browser",
-      "token": "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"
+      "repo": "programmer-browser"
     }
   },
   "devEngines": {
