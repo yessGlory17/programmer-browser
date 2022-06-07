@@ -55,10 +55,10 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 
   - [x] Change Search Engine
   - [x] Navigating between tabs
-  - [ ] Close Tab
+  - [x] Close Tab
   - [ ] Close All Tab
-  - [ ] Previous Page
-  - [ ] Next Page
+  - [x] Previous Page
+  - [x] Next Page
 
 - [ ] Create Categories
 - [ ] Context Menu (Cut/Copy/Paste)
