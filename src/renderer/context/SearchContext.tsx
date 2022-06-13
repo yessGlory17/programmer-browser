@@ -41,8 +41,17 @@ export const SearchContextProvider = ({
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setKeyword((event.target as HTMLInputElement).value);
 
+  const getSearchPath = (searchEnginePath: string, searchPath: string) => {
+    const urlExpression = /(http(s)?:\/\/)[a-zA-Z0-9]+(\.[^\s]{2,})+/;
+    if (searchPath.match(urlExpression)) {
+      return searchPath;
+    }
+
+    return searchEnginePath + searchPath;
+  };
+
   const search = () => {
-    const searchKeyword = searchEngine + keyword;
+    const searchKeyword = getSearchPath(searchEngine, keyword);
     setUrl(searchKeyword);
     const newTab: Tab = {
       tabId: uuidv4(),
