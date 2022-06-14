@@ -78,9 +78,9 @@ npm start
 Build Browser
 
 ```js
-npm run package --linux
-npm run package --mac
-npm run package --windows
+npm run package:linux
+npm run package:mac
+npm run package:windows
 ```
 
 ## :zap: How to Install .deb File
