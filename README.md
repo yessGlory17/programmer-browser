@@ -65,7 +65,7 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 - [ ] Set Tab Color
 - [x] Refresh Collapse
 - [ ] Add Electron Updater
-
+- [ ] Right Click Open New Tab
 ## :crystal_ball: Usage
 
 In the project directory, you can run:
