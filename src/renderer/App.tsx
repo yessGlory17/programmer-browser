@@ -12,8 +12,6 @@ import ShortcutKeys from './hooks/shortcut/ShortcutKeys';
 import useHotkeys from './hooks/shortcut/useHotkeys';
 
 const Hello = () => {
-  const [counter, setCounter] = useState<number>(0);
-
   //Shorcut: Window Move
   useHotkeys(`${ShortcutKeys.CTRL}+${ShortcutKeys.LeftArrow}`, () => {
     window.electron.ipcRenderer.sendMessage('window-move', 'topLeft');
