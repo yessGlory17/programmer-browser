@@ -14,32 +14,17 @@ import { FaYandexInternational } from 'react-icons/fa';
 import '../App.css';
 import { SearchContext } from '../context/SearchContext';
 import { TabContext } from '../context/TabContext';
-import SearchEngineModal from './Settings/SearchEngineModal';
 
 const Searchbar = () => {
-  const [isModalOpen, setModal] = useState<boolean>(false);
-
   const { onChange, search, searchEngine } = useContext(SearchContext);
 
   const { nextTab } = useContext(TabContext);
 
   const handleSetSearchEngineShortcut = useCallback(
     (event: KeyboardEvent) => {
-      if (event.ctrlKey && (event.key === 'E' || event.key === 'e')) {
-        setModal(!isModalOpen);
-      }
-
-      if (event.ctrlKey && event.key === 'ArrowLeft') {
-        window.electron.ipcRenderer.sendMessage('window-move', 'topLeft');
-      }
-
-      if (event.ctrlKey && event.key === 'ArrowRight') {
-        window.electron.ipcRenderer.sendMessage('window-move', 'topRight');
-      }
-
       nextTab?.(event);
     },
-    [nextTab, isModalOpen]
+    [nextTab]
   );
 
   useEffect(() => {
@@ -72,7 +57,7 @@ const Searchbar = () => {
             color="white"
             backgroundColor="#32363e"
             border="none"
-            onClick={() => setModal(!isModalOpen)}
+            //onClick={() => setModal(!isModalOpen)}
           >
             {getEngineIcon()}
           </InputLeftAddon>
@@ -107,7 +92,6 @@ const Searchbar = () => {
           </InputRightElement>
         </InputGroup>
       </HStack>
-      <SearchEngineModal isOpen={isModalOpen} onClose={() => setModal(false)} />
     </>
   );
 };

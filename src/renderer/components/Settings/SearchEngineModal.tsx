@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -10,21 +10,34 @@ import {
 } from '@chakra-ui/react';
 
 import { SearchContext } from '../../context/SearchContext';
+import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
+import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 
 type SearchEngineModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-const SearchEngineModal = ({ isOpen, onClose }: SearchEngineModalProps) => {
+const SearchEngineModal = () => {
   const { setSearchEngine, searchEngine } = useContext(SearchContext);
+
+  const [isOpen, setOpen] = useState<boolean>(false);
 
   const onChangeSelect = (event: React.FormEvent<HTMLElement>) =>
     setSearchEngine?.((event.target as HTMLFormElement).value);
 
+  useHotkeys(`${ShortcutKeys.CTRL}+${ShortcutKeys.E}`, () => {
+    setOpen(!isOpen);
+  });
+
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          setOpen(false);
+        }}
+      >
         <ModalOverlay backgroundColor="transparent" />
         <ModalContent
           backgroundColor="#32363e"
