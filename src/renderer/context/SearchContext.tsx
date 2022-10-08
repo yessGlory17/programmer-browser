@@ -24,6 +24,7 @@ type SearchContextProps = {
   onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
   search: () => void;
   tabs: Tab[];
+  setTabs: React.Dispatch<React.SetStateAction<Tab[] | undefined>>;
   closeTab: (id: string) => void;
 };
 
@@ -68,6 +69,8 @@ export const SearchContextProvider = ({
     setTabs(result);
   };
 
+  const closeOtherTabs = (index: number) => {};
+
   //Close All Tabs Shortcut: Alt+X
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.X}`, () => {
     setTabs([]);
@@ -82,11 +85,11 @@ export const SearchContextProvider = ({
         setKeyword,
         searchEngine,
         setSearchEngine,
-        // selectSearchEngine,
         onChange,
         search,
         tabs,
         closeTab,
+        setTabs,
       }}
     >
       {children}
