@@ -71,8 +71,6 @@ export const SearchContextProvider = ({
     setTabs(result);
   };
 
-  const closeOtherTabs = (index: number) => {};
-
   //Close All Tabs Shortcut: Alt+X
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.X}`, () => {
     setTabs([]);
