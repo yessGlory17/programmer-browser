@@ -48,6 +48,7 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 | Close All Tabs          | Alt + X            |                            |
 | Close Other Tabs        | Alt + O            |                            |
 | Close Current Tab       | Alt + T            |                            |
+| Find In Tab             | Ctrl + F           |                            |
 
 ## :tada: Roadmap
 
@@ -67,6 +68,7 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
   - [x] Next Page
   - [x] Close Other Tabs
   - [x] Close Current Tab
+  - [x] Find In Tab
   - [ ] Mute Current Tab Audio
 
 - [ ] Create Categories
