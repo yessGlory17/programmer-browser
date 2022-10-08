@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import React, { useContext, useRef } from 'react';
 import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from 'react-icons/ai';
+import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
+import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 import { SearchContext } from '../context/SearchContext';
 import Webview from './Webview';
 

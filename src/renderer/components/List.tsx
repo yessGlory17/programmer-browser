@@ -1,13 +1,27 @@
 import { Accordion } from '@chakra-ui/react';
 import { useContext } from 'react';
+import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
+import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 import { SearchContext } from '../context/SearchContext';
 import { TabContext } from '../context/TabContext';
 import BrowserCollapse from './BrowserCollapse';
 
 const List = () => {
-  const { tabs } = useContext(SearchContext);
+  const { tabs, setTabs } = useContext(SearchContext);
 
   const { currentTabIndex, setTabIndex } = useContext(TabContext);
+
+  //Close Other Tabs Shortcut: ALT+O
+  useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.O}`, () => {
+    const result = tabs?.filter((_, i) => i === currentTabIndex);
+    setTabs?.(result);
+  });
+
+  //Close Current Tab Shortcut: ALT+T
+  useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.T}`, () => {
+    const result = tabs?.filter((_, i) => i !== currentTabIndex);
+    setTabs?.(result);
+  });
 
   const onOpen = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,

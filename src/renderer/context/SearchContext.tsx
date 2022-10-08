@@ -1,4 +1,6 @@
 import { createContext, useState } from 'react';
+import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
+import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 import { v4 as uuidv4 } from 'uuid';
 
 type Tab = {
@@ -22,6 +24,7 @@ type SearchContextProps = {
   onChange: (evt: React.ChangeEvent<HTMLInputElement>) => void;
   search: () => void;
   tabs: Tab[];
+  setTabs: React.Dispatch<React.SetStateAction<Tab[] | undefined>>;
   closeTab: (id: string) => void;
 };
 
@@ -35,7 +38,7 @@ export const SearchContextProvider = ({
   const [searchEngine, setSearchEngine] = useState<string>(
     'https://www.google.com/search?q='
   );
-  const [tabs, setTabs] = useState<Tab[]>([]);
+  const [tabs, setTabs] = useState<Tab[] | undefined>([]);
 
   // const selectSearchEngine = (event: Event) => setSearchEngine(event.target.value);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -58,13 +61,20 @@ export const SearchContextProvider = ({
       keyword,
       url: searchKeyword,
     };
-    setTabs([...tabs, newTab]);
+    if (tabs) {
+      setTabs([...tabs, newTab]);
+    }
   };
 
   const closeTab = (id: string) => {
-    const result = tabs.filter((item) => item.tabId !== id);
+    const result = tabs?.filter((item) => item.tabId !== id);
     setTabs(result);
   };
+
+  //Close All Tabs Shortcut: Alt+X
+  useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.X}`, () => {
+    setTabs([]);
+  });
 
   return (
     <SearchContext.Provider
@@ -75,11 +85,11 @@ export const SearchContextProvider = ({
         setKeyword,
         searchEngine,
         setSearchEngine,
-        // selectSearchEngine,
         onChange,
         search,
         tabs,
         closeTab,
+        setTabs,
       }}
     >
       {children}
