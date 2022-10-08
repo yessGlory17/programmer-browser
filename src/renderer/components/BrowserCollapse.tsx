@@ -50,12 +50,6 @@ const BrowserCollapse = ({
 
   const close = (id: string) => closeTab?.(id);
 
-  //Close Current Tab Shortcut: ALT+T
-  useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.T}`, () => {
-    console.log('current name: ', name);
-    closeTab?.(tabId);
-  });
-  
   const back = (
     e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {

@@ -11,9 +11,15 @@ const List = () => {
 
   const { currentTabIndex, setTabIndex } = useContext(TabContext);
 
-  //Close Other Tabs: ALT+O
+  //Close Other Tabs Shortcut: ALT+O
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.O}`, () => {
-    const result = tabs?.filter((item, i) => i === currentTabIndex);
+    const result = tabs?.filter((_, i) => i === currentTabIndex);
+    setTabs?.(result);
+  });
+
+  //Close Current Tab Shortcut: ALT+T
+  useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.T}`, () => {
+    const result = tabs?.filter((_, i) => i !== currentTabIndex);
     setTabs?.(result);
   });
 

@@ -38,7 +38,7 @@ export const SearchContextProvider = ({
   const [searchEngine, setSearchEngine] = useState<string>(
     'https://www.google.com/search?q='
   );
-  const [tabs, setTabs] = useState<Tab[]>([]);
+  const [tabs, setTabs] = useState<Tab[] | undefined>([]);
 
   // const selectSearchEngine = (event: Event) => setSearchEngine(event.target.value);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -61,11 +61,13 @@ export const SearchContextProvider = ({
       keyword,
       url: searchKeyword,
     };
-    setTabs([...tabs, newTab]);
+    if (tabs) {
+      setTabs([...tabs, newTab]);
+    }
   };
 
   const closeTab = (id: string) => {
-    const result = tabs.filter((item) => item.tabId !== id);
+    const result = tabs?.filter((item) => item.tabId !== id);
     setTabs(result);
   };
 
