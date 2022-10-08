@@ -45,27 +45,47 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 | Navigating between tabs | Ctrl + (index)     | Ctrl + 1 => Open First Tab |
 | Window Move Left        | Ctrl + Left Arrow  |                            |
 | Window Move Right       | Ctrl + Right Arrow |                            |
+| Close All Tabs          | Alt + X            |                            |
+| Close Other Tabs        | Alt + O            |                            |
+| Close Current Tab       | Alt + T            |                            |
 
 ## :tada: Roadmap
 
 - [x] Collapses
+
 - [x] AdBlock
+
 - [ ] Mute Collapse Audio
+
 - [ ] Keyboard Shortcuts (Search/Control) (VIM/Emacs)
 
   - [x] Change Search Engine
   - [x] Navigating between tabs
   - [x] Close Tab
-  - [ ] Close All Tab
+  - [x] Close All Tab
   - [x] Previous Page
   - [x] Next Page
+  - [x] Close Other Tabs
+  - [x] Close Current Tab
+  - [ ] Mute Current Tab Audio
 
 - [ ] Create Categories
-- [ ] Context Menu (Cut/Copy/Paste)
+
+- [ ] Context Menu
+
+  - [ ] Right Click Open New Tab
+  - [ ] Run Terminal Command (for: Linux)
+  - [ ] Cut
+  - [ ] Copy
+  - [ ] Paste
+
 - [ ] Set Tab Color
+
 - [x] Refresh Collapse
+
 - [ ] Add Electron Updater
-- [ ] Right Click Open New Tab
+
+  
 ## :crystal_ball: Usage
 
 In the project directory, you can run:
