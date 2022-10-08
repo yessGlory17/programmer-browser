@@ -11,6 +11,7 @@ enum ShortcutKeys {
   T = 'KeyT',
   G = 'KeyG',
   E = 'KeyE',
+  X = 'KeyX',
 }
 
 export default ShortcutKeys;

@@ -1,4 +1,6 @@
 import { createContext, useState } from 'react';
+import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
+import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 import { v4 as uuidv4 } from 'uuid';
 
 type Tab = {
@@ -65,6 +67,11 @@ export const SearchContextProvider = ({
     const result = tabs.filter((item) => item.tabId !== id);
     setTabs(result);
   };
+
+  //Close All Tabs Shortcut: Alt+X
+  useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.X}`, () => {
+    setTabs([]);
+  });
 
   return (
     <SearchContext.Provider
