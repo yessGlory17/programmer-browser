@@ -24,6 +24,7 @@ import {
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FindInPageContext } from 'renderer/context/FindInPageContext';
 import { TabContext } from 'renderer/context/TabContext';
+import useWebviewReady from 'renderer/hooks/webview/useWebviewReady';
 import { WebViewOverride } from '../BrowserCollapse';
 
 type FindInPageProps = {
@@ -38,6 +39,8 @@ const FindInPage = ({ children, webviewRef, index }: FindInPageProps) => {
   const { currentTabIndex } = useContext(TabContext);
 
   const [keyword, setKeyword] = useState<string | null>(null);
+
+  const isWebviewReady = useWebviewReady(webviewRef);
 
   const searchInputOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const word = e.currentTarget.value;
@@ -57,12 +60,14 @@ const FindInPage = ({ children, webviewRef, index }: FindInPageProps) => {
   };
 
   const clearAllSelection = () => {
-    webviewRef.current?.stopFindInPage('clearSelection');
-    setShowFind?.(false);
+    if (isWebviewReady) {
+      webviewRef.current?.stopFindInPage('clearSelection');
+      setShowFind?.(false);
+    }
   };
 
   useEffect(() => {
-    if (currentTabIndex !== index) {
+    if (currentTabIndex !== index && webviewRef.current) {
       clearAllSelection();
     }
   }, [currentTabIndex]);

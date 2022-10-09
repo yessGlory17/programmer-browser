@@ -100,6 +100,7 @@ const BrowserCollapse = ({
         <h2>
           <FindInPage webviewRef={webviewRef} index={index}>
             <AccordionButton
+              as="div"
               style={{ height: '40px' }}
               _expanded={{ bg: '#03c9d7', color: 'white' }}
               onClick={(e) => {
