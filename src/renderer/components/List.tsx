@@ -50,7 +50,7 @@ const List = () => {
         overflowY="scroll"
       >
         {tabs?.map((tab, index) => (
-          <FindInPageProvider>
+          <FindInPageProvider key={index}>
             <BrowserCollapse
               key={tab.tabId}
               name={tab.keyword}
