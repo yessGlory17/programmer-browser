@@ -15,7 +15,7 @@
     "package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish always --win --linux",
     "package:win": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish never --win",
     "package:linux": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish never --linux",
-    "deploy": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish always",
+    "deploy": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish always --win --linux",
     "prepare": "husky install",
     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
     "start": "ts-node ./.erb/scripts/check-port-in-use.js && npm run start:renderer",
