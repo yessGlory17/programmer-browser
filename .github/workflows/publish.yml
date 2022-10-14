@@ -19,39 +19,28 @@ jobs:
 
     steps:
       - name: Checkout git repo
-        uses: actions/checkout@v1
-
-      - name: Checkout git repo v2
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Node and NPM
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
 
-      - name: Install Electron Builder
-        run: npm i -g electron-builder
-
-      - name: Install dependencies
+      - name: Install and build
         run: |
           npm install
-
-      - name: Install Wine
-        run: |
-          chmod +x ./public/scripts/install_wine.sh
-          ./public/scripts/install_wine.sh
-        shell: bash
+          npm run postinstall
+          npm run build
 
       - name: Publish releases
         env:
           # These values are used for auto updates signing
-          # APPLE_ID: ${{ secrets.APPLE_ID }}
-          # APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
-          # CSC_LINK: ${{ secrets.CSC_LINK }}
-          # CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          #APPLE_ID: ${{ secrets.APPLE_ID }}
+          #APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
+          #CSC_LINK: ${{ secrets.CSC_LINK }}
+          #CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
           # This is used for uploading release assets to github
-          GH_TOKEN: ${{ secrets.SECRET_TOKEN}}
+          GH_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
-          npm run build
-          npm run package
+          npm exec electron-builder -- --publish always --win --mac --linux
