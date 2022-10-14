@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-20.04]
 
     steps:
       - name: Checkout git repo
@@ -29,18 +29,16 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      
+
       - name: Install dependencies
         run: |
           npm install
 
       - name: Install Wine
         run: |
-          sudo dpkg --add-architecture i386
-          wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
-          sudo apt-add-repository "deb https://dl.winehq.org/wine-builds/ubuntu $(lsb_release -cs) main"
-          sudo apt-get install --install-recommends winehq-stable
+          chmod +x ./public/scripts/install_wine.sh
+          ./public/scripts/install_wine.sh
+        shell: bash
 
       - name: Publish releases
         env:
