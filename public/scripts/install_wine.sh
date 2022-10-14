@@ -12,3 +12,4 @@ sudo apt-get update
 sudo apt-get install -y --install-recommends winehq-stable
 sudo apt-get install -y winetricks
 sudo apt-get install -y winbind
+sudo apt-get install -y wine
