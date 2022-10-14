@@ -30,6 +30,9 @@ jobs:
           node-version: 16
           cache: npm
 
+      - name: Install Electron Builder
+        run: npm i -g electron-builder
+
       - name: Install dependencies
         run: |
           npm install
