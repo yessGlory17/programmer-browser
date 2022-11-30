@@ -51,10 +51,8 @@ export const SearchContextProvider = ({
       return searchPath;
     }
 
-    // if searchpath starts with >, then don't search, but open the url with https:// or http:// appended
-    // depending on which one retruns a valid response
+
     if (searchPath.startsWith('>')) {
-      //test with http://
       const http = searchPath.replace('>', 'http://');
       return http;
     }
