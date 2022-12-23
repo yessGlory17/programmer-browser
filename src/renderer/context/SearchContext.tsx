@@ -46,8 +46,15 @@ export const SearchContextProvider = ({
 
   const getSearchPath = (searchEnginePath: string, searchPath: string) => {
     const urlExpression = /(http(s)?:\/\/)[a-zA-Z0-9]+(\.[^\s]{2,})+/;
+
     if (searchPath.match(urlExpression)) {
       return searchPath;
+    }
+
+
+    if (searchPath.startsWith('>')) {
+      const http = searchPath.replace('>', 'http://');
+      return http;
     }
 
     return searchEnginePath + searchPath;
@@ -55,7 +62,6 @@ export const SearchContextProvider = ({
 
   const search = () => {
     const searchKeyword = getSearchPath(searchEngine, keyword);
-    setUrl(searchKeyword);
     const newTab: Tab = {
       tabId: uuidv4(),
       keyword,
