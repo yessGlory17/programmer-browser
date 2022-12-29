@@ -11,9 +11,9 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { SiDuckduckgo } from 'react-icons/si';
 import { FaYandexInternational } from 'react-icons/fa';
-import '../App.css';
-import { SearchContext } from '../context/SearchContext';
-import { TabContext } from '../context/TabContext';
+import '../../App.css';
+import { SearchContext } from '../../context/SearchContext';
+import { TabContext } from '../../context/TabContext';
 
 const Searchbar = () => {
   const { onChange, search, searchEngine } = useContext(SearchContext);
