@@ -6,7 +6,6 @@ import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 import { SearchContext } from '../../context/SearchContext';
 import { TabContext } from '../../context/TabContext';
 import BrowserCollapse from '../BrowserCollapse/BrowserCollapse';
-import FindInPage from '../FindInPage/FindInPage';
 
 const TabList = () => {
   const { tabs, setTabs } = useContext(SearchContext);
@@ -31,7 +30,7 @@ const TabList = () => {
   ) => {
     e.preventDefault();
     if (currentTabIndex === index) {
-      setTabIndex?.(null);
+      setTabIndex?.(undefined);
     } else {
       setTabIndex?.(index);
     }
@@ -50,6 +49,7 @@ const TabList = () => {
         overflowY="scroll"
       >
         {tabs?.map((tab, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <FindInPageProvider key={index}>
             <BrowserCollapse
               key={tab.tabId}
