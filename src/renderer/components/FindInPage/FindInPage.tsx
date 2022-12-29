@@ -25,7 +25,7 @@ import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { FindInPageContext } from 'renderer/context/FindInPageContext';
 import { TabContext } from 'renderer/context/TabContext';
 import useWebviewReady from 'renderer/hooks/webview/useWebviewReady';
-import { WebViewOverride } from '../BrowserCollapse';
+import { WebViewOverride } from '../BrowserCollapse/BrowserCollapse';
 
 type FindInPageProps = {
   children: ReactNode;

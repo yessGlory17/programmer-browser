@@ -14,9 +14,9 @@ import { FindInPageContext } from 'renderer/context/FindInPageContext';
 import { TabContext } from 'renderer/context/TabContext';
 import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
 import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
-import { SearchContext } from '../context/SearchContext';
-import FindInPage from './FindInPage/FindInPage';
-import Webview from './Webview';
+import { SearchContext } from '../../context/SearchContext';
+import FindInPage from '../FindInPage/FindInPage';
+import Webview from '../Webview/Webview';
 
 type BrowserCollapseTypes = {
   name: string;

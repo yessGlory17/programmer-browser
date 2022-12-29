@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import { FindInPageProvider } from 'renderer/context/FindInPageContext';
 import ShortcutKeys from 'renderer/hooks/shortcut/ShortcutKeys';
 import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
-import { SearchContext } from '../context/SearchContext';
-import { TabContext } from '../context/TabContext';
-import BrowserCollapse from './BrowserCollapse';
-import FindInPage from './FindInPage/FindInPage';
+import { SearchContext } from '../../context/SearchContext';
+import { TabContext } from '../../context/TabContext';
+import BrowserCollapse from '../BrowserCollapse/BrowserCollapse';
+import FindInPage from '../FindInPage/FindInPage';
 
-const List = () => {
+const TabList = () => {
   const { tabs, setTabs } = useContext(SearchContext);
 
   const { currentTabIndex, setTabIndex } = useContext(TabContext);
@@ -66,4 +66,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default TabList;
