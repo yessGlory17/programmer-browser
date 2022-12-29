@@ -51,7 +51,6 @@ export const SearchContextProvider = ({
       return searchPath;
     }
 
-
     if (searchPath.startsWith('>')) {
       const http = searchPath.replace('>', 'http://');
       return http;
@@ -77,7 +76,7 @@ export const SearchContextProvider = ({
     setTabs(result);
   };
 
-  //Close All Tabs Shortcut: Alt+X
+  // Close All Tabs Shortcut: Alt+X
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.X}`, () => {
     setTabs([]);
   });

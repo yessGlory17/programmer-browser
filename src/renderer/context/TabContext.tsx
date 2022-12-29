@@ -25,8 +25,6 @@ export const TabContextProvider = ({ children }: TabContextProviderProps) => {
     }
   };
 
-  
-
   return (
     <TabContext.Provider
       value={{
