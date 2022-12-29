@@ -6,20 +6,19 @@ import useHotkeys from 'renderer/hooks/shortcut/useHotkeys';
 import { SearchContext } from '../../context/SearchContext';
 import { TabContext } from '../../context/TabContext';
 import BrowserCollapse from '../BrowserCollapse/BrowserCollapse';
-import FindInPage from '../FindInPage/FindInPage';
 
 const TabList = () => {
   const { tabs, setTabs } = useContext(SearchContext);
 
   const { currentTabIndex, setTabIndex } = useContext(TabContext);
 
-  //Close Other Tabs Shortcut: ALT+O
+  // Close Other Tabs Shortcut: ALT+O
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.O}`, () => {
     const result = tabs?.filter((_, i) => i === currentTabIndex);
     setTabs?.(result);
   });
 
-  //Close Current Tab Shortcut: ALT+T
+  // Close Current Tab Shortcut: ALT+T
   useHotkeys(`${ShortcutKeys.ALT}+${ShortcutKeys.T}`, () => {
     const result = tabs?.filter((_, i) => i !== currentTabIndex);
     setTabs?.(result);
@@ -31,7 +30,7 @@ const TabList = () => {
   ) => {
     e.preventDefault();
     if (currentTabIndex === index) {
-      setTabIndex?.(null);
+      setTabIndex?.(undefined);
     } else {
       setTabIndex?.(index);
     }
@@ -50,6 +49,7 @@ const TabList = () => {
         overflowY="scroll"
       >
         {tabs?.map((tab, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <FindInPageProvider key={index}>
             <BrowserCollapse
               key={tab.tabId}
