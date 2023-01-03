@@ -40,14 +40,6 @@ jobs:
         run: |
           npm exec electron-builder build --linux
 
-
-        - name: Build Windows Version
-        env:
-          GH_TOKEN: ${{ secrets.SECRET_TOKEN }}
-
-        run: |
-          npm exec electron-builder build --win
-
       - name: Publish releases
         env:
           # These values are used for auto updates signing
@@ -58,4 +50,4 @@ jobs:
           # This is used for uploading release assets to github
           GH_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: |
-          npm exec electron-builder build --linux --win --publish always --win --linux
+          npm exec electron-builder build --linux --publish always --linux
