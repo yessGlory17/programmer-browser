@@ -1,5 +1,5 @@
 <p align="center">
-  <img src='https://github.com/yessGlory17/programmer-browser/blob/main/assets/icon.png' width='200px' height='200px' />
+  <img src='https://github.com/yessGlory17/programmer-browser/blob/main/assets/icon-bg.png' width='200px' height='200px' />
 </p>
 
 # Programmer Browser
@@ -87,7 +87,6 @@ Hello, I am a programmer. And I need to speed dial while writing code. That's wh
 
 - [ ] Add Electron Updater
 
-  
 ## :crystal_ball: Usage
 
 In the project directory, you can run:
