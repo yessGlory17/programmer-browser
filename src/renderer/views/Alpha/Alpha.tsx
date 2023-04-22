@@ -16,7 +16,6 @@ function Alpha() {
     >
       <DrawerButton
         text="Test Icon Button"
-        align="start"
         buttonProps={{
           style: { border: '1px solid green' },
           onClick: () => alert('icon button'),
