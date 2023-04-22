@@ -92,6 +92,7 @@
     "@cliqz/adblocker-electron": "^1.23.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@types/styled-components": "^5.1.26",
     "cross-fetch": "^3.1.5",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.7",
@@ -103,6 +104,7 @@
     "react-focus-lock": "^2.9.1",
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.3.0",
+    "styled-components": "^5.3.9",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
