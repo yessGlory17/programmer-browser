@@ -2,7 +2,7 @@ import { Tab, TabContext } from 'renderer/context/Alpha/TabContext';
 import { Button, Flex } from '../core';
 import withTextAndIconButton from 'renderer/hoc/withTextAndIconButton';
 import { PlusIcon } from '../Icons';
-import { RefObject, useContext, useRef } from 'react';
+import { RefObject, createRef, useContext, useRef } from 'react';
 import { WebViewOverride } from '../BrowserCollapse/BrowserCollapse';
 import { Webview } from 'renderer/components/Webview';
 import { Container } from 'renderer/components/core';
@@ -46,7 +46,7 @@ export function TabPanel({ index }: TabPanelProps) {
       width="calc(100vw - 250px)"
       height="100vh"
       debug
-      style={{ backgroundColor: 'cyan', display: passive ? 'none' : 'block' }}
+      style={{ backgroundColor: 'white', display: passive ? 'none' : 'block' }}
     >
       <Webview
         url="https://www.google.com/search?q="
@@ -71,7 +71,7 @@ function TabList() {
         text="New Tab"
         buttonProps={{
           onClick: () => {
-            const ref = useRef<WebViewOverride>(null);
+            const ref = createRef<WebViewOverride>();
             const tab: Tab = {
               keyword: '',
               webviewRef: ref,
