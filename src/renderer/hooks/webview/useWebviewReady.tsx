@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
-import { WebViewOverride } from 'renderer/components/BrowserCollapse';
+import { WebViewOverride } from 'renderer/components/BrowserCollapse/BrowserCollapse';
 
 const useWebviewReady = (ref: RefObject<WebViewOverride>) => {
   const [isReady, setReady] = useState<boolean>(false);
