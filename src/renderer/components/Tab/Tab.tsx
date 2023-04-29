@@ -2,8 +2,10 @@ import { Tab, TabContext } from 'renderer/context/Alpha/TabContext';
 import { Button, Flex } from '../core';
 import withTextAndIconButton from 'renderer/hoc/withTextAndIconButton';
 import { PlusIcon } from '../Icons';
-import { createRef, useContext, useRef } from 'react';
+import { RefObject, useContext, useRef } from 'react';
 import { WebViewOverride } from '../BrowserCollapse/BrowserCollapse';
+import { Webview } from 'renderer/components/Webview';
+import { Container } from 'renderer/components/core';
 
 const NewTab = withTextAndIconButton(PlusIcon);
 
@@ -30,6 +32,32 @@ function Tab({ index }: TabProps) {
   );
 }
 
+type TabPanelProps = {
+  index: number;
+};
+
+export function TabPanel({ index }: TabPanelProps) {
+  const { tabs, tabIndex } = useContext(TabContext);
+
+  const passive = index !== tabIndex;
+
+  return (
+    <Container
+      width="calc(100vw - 250px)"
+      height="100vh"
+      debug
+      style={{ backgroundColor: 'cyan', display: passive ? 'none' : 'block' }}
+    >
+      <Webview
+        url="https://www.google.com/search?q="
+        viewRef={tabs?.[index]?.webviewRef ?? null}
+        width="100%"
+        height="100%"
+      />
+    </Container>
+  );
+}
+
 function TabList() {
   const { tabs, newTab } = useContext(TabContext);
 
@@ -43,10 +71,10 @@ function TabList() {
         text="New Tab"
         buttonProps={{
           onClick: () => {
-            const webviewRef = createRef<WebViewOverride>();
+            const ref = useRef<WebViewOverride>(null);
             const tab: Tab = {
               keyword: '',
-              webviewRef: webviewRef,
+              webviewRef: ref,
             };
             newTab?.(tab);
             console.log('new tab pressed');

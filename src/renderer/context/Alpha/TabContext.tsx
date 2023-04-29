@@ -1,8 +1,9 @@
 import { createContext, useEffect, useState } from 'react';
+import { WebViewOverride } from 'renderer/components/BrowserCollapse/BrowserCollapse';
 
 export type Tab = {
   keyword: string;
-  webviewRef: React.Ref<HTMLWebViewElement>;
+  webviewRef: React.RefObject<WebViewOverride>;
 };
 
 type TabContextProps = {
