@@ -1,10 +1,7 @@
-import { DrawerIcon } from 'renderer/components/Icons';
-import { Container } from 'renderer/components/core';
-import Button from 'renderer/components/core/Button';
-import withIconButton from 'renderer/hoc/withIconButton';
-import withTextAndIconButton from 'renderer/hoc/withTextAndIconButton';
-
-const DrawerButton = withTextAndIconButton(DrawerIcon);
+import Sidebar from 'renderer/components/Sidebar/Sidebar';
+import { Container, Flex } from 'renderer/components/core';
+import { TabContextProvider } from 'renderer/context/Alpha/TabContext';
+import Main from './Main';
 
 function Alpha() {
   return (
@@ -12,15 +9,14 @@ function Alpha() {
       width="100vw"
       height="100vh"
       debug
-      style={{ backgroundColor: 'red' }}
+      style={{ backgroundColor: 'rgba(17,17,17,0.95)' }}
     >
-      <DrawerButton
-        text="Test Icon Button"
-        buttonProps={{
-          style: { border: '1px solid green' },
-          onClick: () => alert('icon button'),
-        }}
-      />
+      <TabContextProvider>
+        <Flex>
+          <Sidebar />
+          <Main />
+        </Flex>
+      </TabContextProvider>
     </Container>
   );
 }
