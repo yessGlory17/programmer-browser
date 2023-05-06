@@ -12,6 +12,7 @@ type TabContextProps = {
   tabs: Tab[];
   currentTab: Tab;
   newTab: (tab: Tab) => void;
+  search: (value: string) => void;
 };
 
 type TabContextProviderProps = {
@@ -35,14 +36,34 @@ export function TabContextProvider({ children }: TabContextProviderProps) {
   }, [currentTab]);
 
   // Yeni sekme ekleme
-
   function newTab(tab: Tab): void {
     setTabs([...tabs, tab]);
   }
 
+  function search(value: string): void {
+    //! Problem: Current Tab'i guncelliyorum ancak, tabs icindeki indexteki tab'i guncellemiyorum.
+
+    const updatedTabs = tabs?.map((tab, index) => {
+      if (index === tabIndex) {
+        return {
+          keyword: value,
+          webviewRef: tab?.webviewRef,
+        };
+      }
+      return tab;
+    });
+
+    setTabs(updatedTabs);
+
+    setCurrentTab({
+      keyword: value,
+      webviewRef: currentTab?.webviewRef,
+    });
+  }
+
   return (
     <TabContext.Provider
-      value={{ tabIndex, setTabIndex, tabs, currentTab, newTab }}
+      value={{ tabIndex, setTabIndex, tabs, currentTab, newTab, search }}
     >
       {children}
     </TabContext.Provider>

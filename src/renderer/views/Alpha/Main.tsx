@@ -1,5 +1,3 @@
-import { Webview } from 'renderer/components/Webview';
-import { Container } from 'renderer/components/core';
 import { useContext } from 'react';
 import { TabContext } from 'renderer/context/Alpha/TabContext';
 import { TabPanel } from 'renderer/components/Tab/Tab';

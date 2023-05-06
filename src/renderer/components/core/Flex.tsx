@@ -49,6 +49,7 @@ const Flex = styled.div<FlexProps>`
   align-items: ${(props) => props.alignItems ?? 'normal'};
   justify-content: ${(props) => props.justifyContent ?? 'start'};
   flex-wrap: ${(props) => props.flexWrap ?? 'no-wrap'};
+  height: inherit;
 `;
 
 export default Flex;
