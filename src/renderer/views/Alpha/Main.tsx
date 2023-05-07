@@ -1,6 +1,6 @@
 import { useContext } from 'react';
+import { TabPanel } from 'renderer/components/Tab';
 import { TabContext } from 'renderer/context/Alpha/TabContext';
-import { TabPanel } from 'renderer/components/Tab/Tab';
 
 function Main() {
   const { tabs } = useContext(TabContext);

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import TabList from '../Tab/Tab';
 import { Container } from '../core';
 import { SidebarToggleContext } from 'renderer/context/Alpha/SidebarToggleContext';
 import styled from 'styled-components';
+import { TabList } from '../Tab';
 
 type SidebarContainerProps = {
   sidebarOpen: boolean;
