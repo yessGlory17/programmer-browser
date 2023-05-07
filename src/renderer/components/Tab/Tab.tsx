@@ -1,5 +1,5 @@
 import { Tab, TabContext } from 'renderer/context/Alpha/TabContext';
-import { Button, Flex } from '../core';
+import { Flex } from '../core';
 import withTextAndIconButton from 'renderer/hoc/withTextAndIconButton';
 import { PlusIcon } from '../Icons';
 import { createRef, useCallback, useContext, useEffect, useState } from 'react';
@@ -15,16 +15,74 @@ type WebviewWrapperProps = {
 };
 
 const WebviewWrapper = styled(Container)<WebviewWrapperProps>`
+  width: calc(100vw - 300px);
+  height: calc(100vh - 50px);
+  border-radius: 20px;
   background-color: white;
   display: ${(props) => (props.passive ? 'none' : 'active')};
+  margin-left: 30px;
 `;
 
 type TabProps = {
   index: number;
 };
 
+type TabButtonProps = {
+  active: boolean;
+};
+
+const TabButton = styled('button')<TabButtonProps>`
+  width: 250px;
+  height: 30px;
+  background-color: ${(props) => (props.active ? '#2599FF' : 'transparent')};
+  border-radous: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  text-align: left;
+`;
+
+const Favicon = styled('img')`
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  object-fit: cover;
+`;
+
+const TabText = styled('p')`
+  color: white;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 200px;
+  height: 1.2em;
+  white-space: nowrap;
+  padding-left: 8px;
+`;
+
 function Tab({ index }: TabProps) {
   const { setTabIndex, tabIndex, tabs } = useContext(TabContext);
+  const [isFaviconUpdated, setFaviconUpdated] = useState<boolean>(false);
+  useEffect(() => {
+    const update = () => {
+      setFaviconUpdated(!isFaviconUpdated);
+    };
+    tabs?.[index]?.webviewRef?.current?.addEventListener(
+      'page-title-updated',
+      update
+    );
+
+    return () => {
+      tabs?.[index]?.webviewRef?.current?.removeEventListener(
+        'page-title-updated',
+        update
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    console.warn('favicon guncellendi.');
+  }, [isFaviconUpdated]);
 
   const getTitle = (): string => {
     const currentTab = tabs?.[index];
@@ -33,19 +91,22 @@ function Tab({ index }: TabProps) {
     }
     return currentTab?.webviewRef?.current.getTitle();
   };
+
+  const getFavicon = useCallback(() => {
+    const currentTab = tabs?.[index];
+    if (!currentTab?.webviewRef?.current) {
+      return '';
+    }
+    return currentTab?.webviewRef?.current.getURL();
+  }, [isFaviconUpdated]);
+
   return (
-    <Button
-      width="250px"
-      height="30px"
-      onClick={() => setTabIndex?.(index)}
-      style={{
-        backgroundColor:
-          tabIndex === index ? 'rgba(17,17,17, 0.5)' : 'transparent',
-        border: tabIndex === index ? '1px solid red' : 'none',
-      }}
-    >
-      {getTitle()}
-    </Button>
+    <TabButton onClick={() => setTabIndex?.(index)} active={tabIndex === index}>
+      <Favicon
+        src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${getFavicon()}&size=64`}
+      />{' '}
+      <TabText>{getTitle()}</TabText>
+    </TabButton>
   );
 }
 
@@ -89,16 +150,14 @@ export function TabPanel({ index }: TabPanelProps) {
 
   return (
     <WebviewWrapper
-      width="calc(100vw - 250px)"
-      height="100vh"
-      debug
+      //debug
       passive={passive()}
     >
       <Webview
         url={url}
         viewRef={tabs?.[index]?.webviewRef ?? null}
-        width="100%"
-        height="100%"
+        width="inherit"
+        height="inherit"
       />
     </WebviewWrapper>
   );

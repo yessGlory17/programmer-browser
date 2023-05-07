@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { Container, Flex, Padding } from '../core';
-import { DrawerIcon } from '../Icons';
+import { Container, Flex, Margin, Padding } from '../core';
+import { DrawerIcon, LeftArrow, RefreshIcon, RightArrow } from '../Icons';
 import withIconButton from 'renderer/hoc/withIconButton';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { TabContext } from 'renderer/context/Alpha/TabContext';
+import ButtonGroup from '../core/ButtonGroup';
 
 enum WindowActionType {
   close = '#F11515',
@@ -32,7 +33,8 @@ const TitlebarWrapper = styled(Container)`
 
 const NoDragContainer = styled(Container)`
   -webkit-app-region: no-drag;
-  background-color: green;
+  display: flex;
+  flex-direction: row;
 `;
 
 function TitleActions() {
@@ -72,17 +74,49 @@ function TitleActions() {
 const Search = styled('input')`
   width: 400px;
   height: 35px;
-  background-color: rgba(17, 17, 17, 0.5);
+  background-color: #20222d;
   padding-left: 10px;
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid #20222d;
   &:focus {
     outline: none;
+    background-color: #121219;
   }
 `;
 
+const Back = withIconButton(LeftArrow);
+const Forward = withIconButton(RightArrow);
+const Refresh = withIconButton(RefreshIcon);
+
 function TabActions() {
   const { search, currentTab } = useContext(TabContext);
+
+  const back = (
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (currentTab?.webviewRef.current?.canGoBack())
+      currentTab?.webviewRef.current.goBack();
+  };
+
+  const forward = (
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (currentTab?.webviewRef.current?.canGoForward())
+      currentTab?.webviewRef.current?.goForward();
+  };
+
+  const refresh = (
+    e: React.MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    e.preventDefault();
+    if (currentTab?.webviewRef.current?.isLoading()) {
+      currentTab?.webviewRef.current?.stop();
+    } else {
+      currentTab?.webviewRef.current?.reload();
+    }
+  };
 
   const onChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -92,16 +126,76 @@ function TabActions() {
     }
   };
 
+  const url = () => {
+    if (currentTab?.webviewRef?.current) {
+      return currentTab?.webviewRef?.current.getURL();
+    }
+    return '';
+  };
+
   return (
     <Container width="calc(100vw - 250px)" height="50px">
       <Flex justifyContent="center" alignItems="center">
         <NoDragContainer>
+          <Margin right="10px">
+            <ButtonGroup width="70px" height="35px">
+              <Back
+                buttonProps={{
+                  width: '35px',
+                  height: '35px',
+                  style: {
+                    backgroundColor: '#20222d',
+                    //border: '1px solid red',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  },
+                  onClick: back,
+                }}
+              />
+              <Forward
+                buttonProps={{
+                  width: '35px',
+                  height: '35px',
+                  style: {
+                    backgroundColor: '#20222d',
+                    //border: '1px solid red',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  },
+                  onClick: forward,
+                }}
+              />
+            </ButtonGroup>
+          </Margin>
           <Search
             type="search"
             placeholder="Search"
             //value={currentTab?.keyword}
+            //defaultValue={url()}
             onKeyDown={onChange}
           />
+          <Margin left="10px">
+            <Refresh
+              buttonProps={{
+                width: '35px',
+                height: '35px',
+                style: {
+                  backgroundColor: '#20222d',
+                  //border: '1px solid red',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '5px',
+                },
+                onClick: refresh,
+              }}
+            />
+          </Margin>
         </NoDragContainer>
       </Flex>
     </Container>
@@ -112,11 +206,12 @@ const TitlebarContainer = styled(Container)`
   width: 100vw;
   height: 50px;
   -webkit-app-region: drag;
+  background-color: #121219;
 `;
 
 function Titlebar() {
   return (
-    <TitlebarContainer debug>
+    <TitlebarContainer>
       <Flex>
         <TitleActions />
         <TabActions />

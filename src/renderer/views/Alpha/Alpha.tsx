@@ -9,8 +9,8 @@ function Alpha() {
     <Container
       width="100vw"
       height="100vh"
-      debug
-      style={{ backgroundColor: 'rgba(17,17,17,0.95)', borderRadius: '10px' }}
+      //debug
+      style={{ backgroundColor: '#121219', borderRadius: '10px' }}
     >
       <TabContextProvider>
         <Titlebar />
