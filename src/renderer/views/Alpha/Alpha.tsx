@@ -3,6 +3,7 @@ import { Container, Flex } from 'renderer/components/core';
 import { TabContextProvider } from 'renderer/context/Alpha/TabContext';
 import Main from './Main';
 import Titlebar from 'renderer/components/Titlebar';
+import { SidebarToggleProvider } from 'renderer/context/Alpha/SidebarToggleContext';
 
 function Alpha() {
   return (
@@ -13,11 +14,13 @@ function Alpha() {
       style={{ backgroundColor: '#121219', borderRadius: '10px' }}
     >
       <TabContextProvider>
-        <Titlebar />
-        <Flex>
-          <Sidebar />
-          <Main />
-        </Flex>
+        <SidebarToggleProvider>
+          <Titlebar />
+          <Flex>
+            <Sidebar />
+            <Main />
+          </Flex>
+        </SidebarToggleProvider>
       </TabContextProvider>
     </Container>
   );

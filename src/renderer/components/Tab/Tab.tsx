@@ -7,19 +7,22 @@ import { WebViewOverride } from '../BrowserCollapse/BrowserCollapse';
 import { Webview } from 'renderer/components/Webview';
 import { Container } from 'renderer/components/core';
 import styled from 'styled-components';
+import { SidebarToggleContext } from 'renderer/context/Alpha/SidebarToggleContext';
 
 const NewTab = withTextAndIconButton(PlusIcon);
 
 type WebviewWrapperProps = {
   passive: boolean;
+  sidebarOpen: boolean;
 };
 
 const WebviewWrapper = styled(Container)<WebviewWrapperProps>`
-  width: calc(100vw - 300px);
-  height: calc(100vh - 50px);
+  width: ${(props) =>
+    props.sidebarOpen ? 'calc(100vw - 300px)' : 'calc(100vw - 50px)'};
+  height: calc(100vh - 70px);
   border-radius: 20px;
   background-color: white;
-  display: ${(props) => (props.passive ? 'none' : 'active')};
+  display: ${(props) => (props.passive ? 'none' : 'block')};
   margin-left: 30px;
 `;
 
@@ -116,6 +119,7 @@ type TabPanelProps = {
 
 export function TabPanel({ index }: TabPanelProps) {
   const { tabs, tabIndex } = useContext(TabContext);
+  const { isOpen } = useContext(SidebarToggleContext);
   const [isReady, setReady] = useState<boolean>(false);
 
   const currentTab = tabs?.[index];
@@ -150,6 +154,7 @@ export function TabPanel({ index }: TabPanelProps) {
 
   return (
     <WebviewWrapper
+      sidebarOpen={isOpen ?? true}
       //debug
       passive={passive()}
     >

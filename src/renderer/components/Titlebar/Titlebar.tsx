@@ -5,6 +5,7 @@ import withIconButton from 'renderer/hoc/withIconButton';
 import { useContext } from 'react';
 import { TabContext } from 'renderer/context/Alpha/TabContext';
 import ButtonGroup from '../core/ButtonGroup';
+import { SidebarToggleContext } from 'renderer/context/Alpha/SidebarToggleContext';
 
 enum WindowActionType {
   close = '#F11515',
@@ -38,6 +39,7 @@ const NoDragContainer = styled(Container)`
 `;
 
 function TitleActions() {
+  const { toggle } = useContext(SidebarToggleContext);
   const debug = false;
   return (
     <TitlebarWrapper debug={debug}>
@@ -61,7 +63,7 @@ function TitleActions() {
               buttonProps={{
                 width: '24px',
                 height: '24px',
-                onClick: () => alert('toggle drawer'),
+                onClick: toggle,
               }}
             />
           </Padding>
