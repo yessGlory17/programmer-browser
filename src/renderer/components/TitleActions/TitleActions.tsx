@@ -10,10 +10,10 @@ import NoDragContainer from '../NoDragContainer';
 const DrawerToggle = withIconButton(DrawerIcon);
 
 function TitleActions() {
-  const { toggle } = useContext(SidebarToggleContext);
+  const { toggle, isOpen } = useContext(SidebarToggleContext);
   const debug = false;
   return (
-    <TitlebarWrapper debug={debug}>
+    <TitlebarWrapper sidebarOpen={isOpen ?? true} debug={debug}>
       <Flex flexDirection="row" justifyContent="space-between">
         <NoDragContainer width="75px" height="25px" debug={debug}>
           <Flex>

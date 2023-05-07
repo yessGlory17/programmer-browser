@@ -3,8 +3,8 @@ import { Flex } from '../core';
 import withTextAndIconButton from 'renderer/hoc/withTextAndIconButton';
 import { PlusIcon } from '../Icons';
 import { createRef, useContext } from 'react';
-import { WebViewOverride } from '../BrowserCollapse/BrowserCollapse';
 import Tab from './Tab';
+import { WebViewOverride } from '../core/types';
 
 const NewTab = withTextAndIconButton(PlusIcon);
 
