@@ -21,7 +21,7 @@ const Webview = ({ url, width, height, viewRef }: WebviewProps) => {
         padding: '0px',
         borderRadius: '15px',
       }}
-      useragent="Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"
+      useragent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
     />
   );
 };

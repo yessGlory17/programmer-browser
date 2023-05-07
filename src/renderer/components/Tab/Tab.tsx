@@ -154,6 +154,7 @@ export function TabPanel({ index }: TabPanelProps) {
 
   return (
     <WebviewWrapper
+      className="webview-wrapper"
       sidebarOpen={isOpen ?? true}
       //debug
       passive={passive()}
@@ -171,7 +172,6 @@ export function TabPanel({ index }: TabPanelProps) {
 function TabList() {
   const { tabs, newTab } = useContext(TabContext);
 
-  console.log('tabs: ', tabs);
   return (
     <Flex flexDirection="column">
       {tabs?.map((_, i) => (

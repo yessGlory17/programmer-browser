@@ -7,9 +7,9 @@ function Main() {
 
   return (
     <>
-      {tabs?.map((_, index) => {
-        return <TabPanel index={index} />;
-      })}
+      {tabs?.map((_, index) => (
+        <TabPanel index={index} />
+      ))}
     </>
   );
 }
