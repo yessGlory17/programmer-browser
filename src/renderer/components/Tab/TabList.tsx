@@ -2,7 +2,7 @@ import { TabContext } from 'renderer/context/Alpha/TabContext';
 import { Flex } from '../core';
 import withTextAndIconButton from 'renderer/hoc/withTextAndIconButton';
 import { PlusIcon } from '../Icons';
-import { createRef, useContext } from 'react';
+import { createRef, useContext, useEffect } from 'react';
 import Tab from './Tab';
 import { WebViewOverride } from '../core/types';
 
@@ -10,6 +10,14 @@ const NewTab = withTextAndIconButton(PlusIcon);
 
 function TabList() {
   const { tabs, newTab } = useContext(TabContext);
+
+  useEffect(() => {
+    tabs?.map((tab) => {
+      tab?.webviewRef?.current?.addEventListener('page-title-updated', () => {
+        console.log('page title updated!');
+      });
+    });
+  }, [tabs]);
 
   return (
     <Flex flexDirection="column">

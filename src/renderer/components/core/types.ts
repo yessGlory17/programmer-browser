@@ -9,4 +9,5 @@ export type WebViewOverride = {
   getTitle: () => string;
   findInPage: (text: string, options: Object) => any;
   stopFindInPage: (action: string) => any;
+  getURL: () => string;
 } & HTMLWebViewElement;

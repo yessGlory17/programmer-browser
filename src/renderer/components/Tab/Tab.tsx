@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import Favicon from '../Favicon';
 import TabButton from './TabButton';
 import TabText from './TabText';
+import useTab from 'renderer/hooks/useTab';
 
 type TabProps = {
   index: number;
@@ -10,6 +11,7 @@ type TabProps = {
 
 function Tab({ index }: TabProps) {
   const { setTabIndex, tabIndex, tabs } = useContext(TabContext);
+  const { title, favicon } = useTab({ index });
   const [isFaviconUpdated, setFaviconUpdated] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,6 +31,14 @@ function Tab({ index }: TabProps) {
     };
   }, []);
 
+  // useEffect(() => {
+  //   tabs?.map((tab) => {
+  //     tab?.webviewRef?.current?.addEventListener('page-title-updated', () => {
+  //       console.log('page title updated!');
+  //     });
+  //   });
+  // }, [tabs]);
+
   const getTitle = (): string => {
     const currentTab = tabs?.[index];
     if (!currentTab?.webviewRef?.current) {
@@ -47,10 +57,7 @@ function Tab({ index }: TabProps) {
 
   return (
     <TabButton onClick={() => setTabIndex?.(index)} active={tabIndex === index}>
-      <Favicon
-        src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${getFavicon()}&size=64`}
-      />{' '}
-      <TabText>{getTitle()}</TabText>
+      <Favicon src={favicon} /> <TabText>{title}</TabText>
     </TabButton>
   );
 }

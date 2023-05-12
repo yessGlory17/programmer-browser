@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { WebViewOverride } from 'renderer/components/BrowserCollapse/BrowserCollapse';
+import { WebViewOverride } from 'renderer/components/core/types';
 
 export type Tab = {
   keyword: string;
