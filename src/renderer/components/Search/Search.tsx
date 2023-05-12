@@ -7,6 +7,7 @@ const Search = styled('input')`
   padding-left: 10px;
   border-radius: 5px;
   border: 1px solid #20222d;
+  color: white;
   &:focus {
     outline: none;
     background-color: #121219;

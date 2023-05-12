@@ -94,7 +94,7 @@ function TabActions() {
               />
             </ButtonGroup>
           </Margin>
-          <Search type="search" placeholder="Search" onKeyDown={onChange} />
+          <Search type="text" placeholder="Search" onKeyDown={onChange} />
           <Margin left="10px">
             <Refresh
               buttonProps={{
