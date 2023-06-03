@@ -31,30 +31,6 @@ function Tab({ index }: TabProps) {
     };
   }, []);
 
-  // useEffect(() => {
-  //   tabs?.map((tab) => {
-  //     tab?.webviewRef?.current?.addEventListener('page-title-updated', () => {
-  //       console.log('page title updated!');
-  //     });
-  //   });
-  // }, [tabs]);
-
-  const getTitle = (): string => {
-    const currentTab = tabs?.[index];
-    if (!currentTab?.webviewRef?.current) {
-      return 'New Tab';
-    }
-    return currentTab?.webviewRef?.current.getTitle();
-  };
-
-  const getFavicon = useCallback(() => {
-    const currentTab = tabs?.[index];
-    if (!currentTab?.webviewRef?.current) {
-      return '';
-    }
-    return currentTab?.webviewRef?.current.getURL();
-  }, [isFaviconUpdated]);
-
   return (
     <TabButton onClick={() => setTabIndex?.(index)} active={tabIndex === index}>
       <Favicon src={favicon} /> <TabText>{title}</TabText>
