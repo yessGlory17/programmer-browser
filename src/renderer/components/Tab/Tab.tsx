@@ -1,5 +1,5 @@
 import { Tab, TabContext } from 'renderer/context/Alpha/TabContext';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Favicon from '../Favicon';
 import TabButton from './TabButton';
 import TabText from './TabText';

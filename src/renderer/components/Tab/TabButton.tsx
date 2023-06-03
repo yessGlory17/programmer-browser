@@ -14,5 +14,7 @@ const TabButton = styled('button')<TabButtonProps>`
   align-items: center;
   justify-content: start;
   text-align: left;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 export default TabButton;
